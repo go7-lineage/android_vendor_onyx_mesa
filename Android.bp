@@ -1,0 +1,107 @@
+soong_namespace {
+}
+
+cc_prebuilt_library_shared {
+    name: "libgallium_dri",
+    vendor: true,
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: ["prebuilt/libgallium_dri.so"],
+        },
+    },
+    shared_libs: [
+        "libcutils",
+        "libdrm",
+        "liblog",
+        "libsync",
+        "libz",
+    ],
+}
+
+cc_prebuilt_library_shared {
+    name: "libEGL_mesa",
+    vendor: true,
+    relative_install_path: "egl",
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: ["prebuilt/libEGL_mesa.so"],
+        },
+    },
+    shared_libs: [
+        "libcutils",
+        "libdrm",
+        "libgallium_dri",
+        "libhardware",
+        "liblog",
+        "libnativewindow",
+        "libsync",
+    ],
+}
+
+cc_prebuilt_library_shared {
+    name: "libGLESv1_CM_mesa",
+    vendor: true,
+    relative_install_path: "egl",
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: ["prebuilt/libGLESv1_CM_mesa.so"],
+        },
+    },
+    shared_libs: [
+        "libgallium_dri",
+    ],
+}
+
+cc_prebuilt_library_shared {
+    name: "libGLESv2_mesa",
+    vendor: true,
+    relative_install_path: "egl",
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: ["prebuilt/libGLESv2_mesa.so"],
+        },
+    },
+    shared_libs: [
+        "libgallium_dri",
+    ],
+}
+
+cc_prebuilt_library_shared {
+    name: "vulkan.freedreno",
+    vendor: true,
+    relative_install_path: "hw",
+    compile_multilib: "64",
+    strip: {
+        none: true,
+    },
+    target: {
+        android_arm64: {
+            srcs: ["prebuilt/vulkan.freedreno.so"],
+        },
+    },
+    shared_libs: [
+        "libcutils",
+        "libdrm",
+        "libhardware",
+        "liblog",
+        "libnativewindow",
+        "libsync",
+        "libz",
+    ],
+}
